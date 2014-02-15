@@ -1,7 +1,9 @@
 import BaseHTTPServer
+from json_conversion import *
 
-def get_json():
-    return "{\"foo\":4}"
+path_to_vomiting = '../data/ASB Noise Cleansing Waste Washing/vomiting-lat-long.csv'
+
+#data = ConvertToJSON(path_to_vomiting, 'F')
 
 class ApiHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(s):
@@ -10,7 +12,7 @@ class ApiHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.end_headers()
 
 
-        s.wfile.write(get_json())
+        s.wfile.write(ConvertToJSON(path_to_vomiting, 'F'))
 
 
 server_class = BaseHTTPServer.HTTPServer
